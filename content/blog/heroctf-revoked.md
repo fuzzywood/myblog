@@ -106,4 +106,6 @@ When an JSON Web token get created it gets signed. That mean its `not encrypted`
 
 ![Devoded](/images/heroctf-revoked/decoded.png)
 
-A signed token allows the application to verify that the content hasn't been changend since the moment i has been created from the host.
+A signed token allows the application to verify that the content hasn't been changend since the moment i has been created from the host
+
+coming soon...
