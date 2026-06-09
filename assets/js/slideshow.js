@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentFace = 0;
   const cube = document.getElementById("cube");
   const tiltWrapper = document.getElementById("tilt-wrapper");
+  let isScrolling = false; // Add a flag for the scroll cooldown
 
   function triggerSkills() {
     const normalizedIndex = ((currentFace % 4) + 4) % 4;
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   }
+
   function updateCube() {
     const rotationY = -currentFace * 90;
     cube.style.transform = `rotateY(${rotationY}deg)`;
@@ -33,6 +35,29 @@ document.addEventListener("DOMContentLoaded", function () {
     currentFace++;
     updateCube();
   });
+
+  // --- NEW: Scroll Event Listener ---
+  document.addEventListener("wheel", (event) => {
+    // If we are currently in the middle of a rotation, ignore the scroll
+    if (isScrolling) return;
+
+    if (event.deltaY > 0) {
+      // Scrolled down -> turn right
+      currentFace++;
+      updateCube();
+    } else if (event.deltaY < 0) {
+      // Scrolled up -> turn left
+      currentFace--;
+      updateCube();
+    }
+
+    // Lock scrolling for 800ms (matching your CSS transition time)
+    isScrolling = true;
+    setTimeout(() => {
+      isScrolling = false;
+    }, 800);
+  });
+  // -----------------------------------
 
   document.addEventListener("mousemove", (e) => {
     const x = e.clientX / window.innerWidth;

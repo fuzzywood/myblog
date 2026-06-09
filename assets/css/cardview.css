@@ -192,18 +192,20 @@ footer {
   top: 50%;
   width: 4em;
   height: 4em;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.4); 
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /* Make the border a bit more pronounced */
+  border: 2px solid rgba(255, 255, 255, 0.6); 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
   z-index: 100;
-  color: white;
+  /* Make the icon inside the arrow strictly white or black for contrast */
+  color: white; 
 }
 .nav-arrow:hover {
   background: rgba(255, 255, 255, 0.3);
